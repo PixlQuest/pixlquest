@@ -21,28 +21,30 @@ canvas.width = 200;
 canvas.height = 200;
 
 
+$(".videoCam").show();
+$(".picture").hide();
+
+/*
+switching cameras
+var front = false;
+document.getElementById('flip-button').onclick = function() { front = !front; };
+*/
 
 // Put variables in global scope to make them available to the browser console.
 var constraints = window.constraints = {
   audio: false,
-  video: true
+  video: { facingMode: "environment" }
 };
 
-
-
-
-
-
-
-
-
+//when a picture is taken do the following
 var snap = function() {
-
-  console.log("snap");
       // Define the size of the rectangle that will be filled (basically the entire element)
       context.fillRect(0, 0, 200, 200);
       // Grab the image from the video
       context.drawImage(video, 0, 0, 200, 200);
+
+      $(".videoCam").hide();
+      $(".picture").show();
     }
 
 
@@ -94,4 +96,4 @@ function errorMsg(msg, error) {
 }
 
 navigator.mediaDevices.getUserMedia(constraints).
-    then(handleSuccess).catch(handleError);
+  then(handleSuccess).catch(handleError);
