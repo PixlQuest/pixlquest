@@ -10,6 +10,17 @@
 
 var errorElement = document.querySelector('#errorMsg');
 var video = document.querySelector('video');
+  var canvas = document.querySelector('canvas'); // holder for photo
+//    var context = canvas.getContext('2d');
+    var context = canvas.getContext('2d');
+
+// variables for later use.
+var w, h, ratio;
+
+canvas.width = 200;
+canvas.height = 200;
+
+
 
 // Put variables in global scope to make them available to the browser console.
 var constraints = window.constraints = {
@@ -17,16 +28,51 @@ var constraints = window.constraints = {
   video: true
 };
 
+
+
+
+
+
+
+
+
+var snap = function() {
+
+  console.log("snap");
+      // Define the size of the rectangle that will be filled (basically the entire element)
+      context.fillRect(0, 0, 200, 200);
+      // Grab the image from the video
+      context.drawImage(video, 0, 0, 200, 200);
+    }
+
+
+
+
+
+
+
+
 function handleSuccess(stream) {
   var videoTracks = stream.getVideoTracks();
   console.log('Got stream with constraints:', constraints);
   console.log('Using video device: ' + videoTracks[0].label);
+
   stream.oninactive = function() {
     console.log('Stream inactive');
   };
   window.stream = stream; // make variable available to browser console
   video.srcObject = stream;
+ // document.getElementById("gum-local").height = "200px";
+ console.log( document.getElementById("gum-local").width );
+
+
 }
+
+
+
+
+
+
 
 function handleError(error) {
   if (error.name === 'ConstraintNotSatisfiedError') {
