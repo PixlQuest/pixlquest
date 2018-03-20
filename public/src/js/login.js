@@ -13,21 +13,15 @@ require.config({
         },
     }
 });
-require(["firebase","firebaseui", "jquery", "test"], function (firebase,firebaseui, Y, test) {
+require(["firebase","firebaseui", "jquery", ["Employee"]], function (firebase, firebaseui, $, test) {
     // "use strict";
 
     console.log("firebase: ", firebase);  // undefined
     console.log("firebaseui: ", firebaseui);  // undefined
-    console.log("jquery: ",$);         // function m(a, b)
+    console.log("juqery: ",$);         // function m(a, b)
     console.log("test: ",test);
-
-    var name = test;
-  alert (name);
-    Y(document).ready(function(){
-        Y("p").click(function(){
-            Y(this).hide();
-        });
-    });
+//alert(name);
+alert();
       var messagesList = document.getElementById('messages'),
           textInput = document.getElementById('text'),
           sendButton = document.getElementById('send'),
