@@ -17,12 +17,17 @@ var video = document.querySelector('video');
 // variables for later use.
 var w, h, ratio;
 
-canvas.width = 200;
-canvas.height = 200;
+canvas.width = 100;
+canvas.height = 100;
 
 
 $(".videoCam").show();
 $(".picture").hide();
+
+
+
+
+
 
 /*
 switching cameras
@@ -36,19 +41,20 @@ var constraints = window.constraints = {
   video: { facingMode: "environment" }
 };
 
-//when a picture is taken do the following
-var snap = function() {
-      // Define the size of the rectangle that will be filled (basically the entire element)
-      context.fillRect(0, 0, 200, 200);
-      // Grab the image from the video
-      context.drawImage(video, 0, 0, 200, 200);
-
-      $(".videoCam").hide();
-      $(".picture").show();
-    }
 
 
-
+//wait for the video to come in and then set the dimensions for recording to the canvas
+video.addEventListener('loadedmetadata', function() {
+      // Calculate the ratio of the video's width to height
+      ratio = video.videoWidth / video.videoHeight;
+      // Define the required width as 100 pixels smaller than the actual video's width
+      w = video.videoWidth - 100;
+      // Calculate the height based on the video's width and the ratio
+      h = parseInt(w / ratio, 10);
+      // Set the canvas width and height to the values just calculated
+      canvas.width = w;
+      canvas.height = h;      
+    }, false);
 
 
 
@@ -56,26 +62,16 @@ var snap = function() {
 
 function handleSuccess(stream) {
   var videoTracks = stream.getVideoTracks();
-  console.log('Got stream with constraints:', constraints);
-  console.log('Using video device: ' + videoTracks[0].label);
 
   stream.oninactive = function() {
     console.log('Stream inactive');
   };
   window.stream = stream; // make variable available to browser console
   video.srcObject = stream;
- // document.getElementById("gum-local").height = "200px";
- console.log( document.getElementById("gum-local").width );
-
 
 }
 
-
-
-
-
-
-
+//if it dont work print this.
 function handleError(error) {
   if (error.name === 'ConstraintNotSatisfiedError') {
     errorMsg('The resolution ' + constraints.video.width.exact + 'x' +
@@ -88,12 +84,25 @@ function handleError(error) {
   errorMsg('getUserMedia error: ' + error.name, error);
 }
 
+
+//if it dont work let us know in the html
 function errorMsg(msg, error) {
   errorElement.innerHTML += '<p>' + msg + '</p>';
   if (typeof error !== 'undefined') {
     console.error(error);
   }
 }
+
+//when a picture is taken do the following
+var snap = function() {
+      // Define the size of the rectangle that will be filled (basically the entire element)
+      context.fillRect(0, 0, w, h);
+      // Grab the image from the video
+      context.drawImage(video, 0, 0, w, h);
+
+      $(".videoCam").hide();
+      $(".picture").show();
+    }
 
 navigator.mediaDevices.getUserMedia(constraints).
   then(handleSuccess).catch(handleError);

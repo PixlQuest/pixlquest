@@ -2,7 +2,7 @@
 canvas {
   background-color: #ccc;
   max-width: 100%;
-  width: 100%;
+  width: 300px;
 }
 
 div#container {
@@ -14,6 +14,6 @@ padding: 1em 1.5em 1.3em 1.5em;
 video {
   background: #222;
   margin: 0 0 20px 0;
-  width: 100%; 
+  width: 300px; 
 }
 
