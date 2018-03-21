@@ -1,0 +1,12 @@
+{
+  "name": "pixlquest",
+  "version": "1.0.0",
+  "description": "A scavanger hunt app that rewards you.",
+  "main": "main.js",
+  "scripts": {
+    "build": "browserify main.js -o bundle.js"
+  },
+  "repository": "https://github.com/PixlQuest/pixlquest.git",
+  "author": "ZhAYinG <8896093+zhaying@users.noreply.github.com>",
+  "license": "MIT"
+}
