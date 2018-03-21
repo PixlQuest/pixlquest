@@ -1,0 +1,63 @@
+p, h1, h2, h3, h4, h5, span{
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    height: 100vh;
+    background: url(../images/background_halftone.jpg) bottom repeat-x;
+}
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.cont_brand{
+    width: 24px;
+    margin-left: 150px;
+    margin-top: 30px;
+}
+
+.brand{
+    background: url(../images/pixlquest_id.png);
+    width: 175px;
+    height: 153px;
+}
+
+.main-cont{
+    margin: 0 auto;
+    width: 60%;
+    height: 40vh;
+    border-radius: 10px;
+    border: solid 0.5px #707070;
+    background: url(../images/pixels@2x.png) center;
+}
+
+.cont_btns{
+    width: 100%;
+    text-align: center;
+}
+
+.btn_base{
+    border-radius: 60px;
+    padding: 20px 40px;
+    font-size: 0.7em;
+    font-weight: regular;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+}
+
+.facebook{
+    background-color: #3558e6;
+    background-image: url(../images/facebook@2x.png) repeat-x;
+    background-position: left;
+}
+
+.google{
+    background-color: #db3329;    
+}
