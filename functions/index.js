@@ -25,31 +25,139 @@ console.log("room: ", roomRef );
 exports.helloWorld = functions.https.onRequest((request, response) => {
   // BGN
   response.send("Hello from Firebase!");
-  console.log("Hello console from Firebase!");
+//  console.log("Hello console from Firebase!");
   // END
 });
 exports.categoryController = functions.https.onRequest((request, response) => {
   // BGN
   response.send("Hello from categoryController!");
-  console.log("Hello console from categoryController!");
+//  console.log("Hello console from categoryController!");
+  // END
+});
+exports.getRoomName = functions.https.onRequest((request, response) => {
+  // BGN
+  //response.send("Hello from getRoomName!");
+  // VARIABLES
+  var name = "pqRooms";
+  var id = "room01";
+  var theRoom01 = db.collection(name).doc(id);
+  var getDoc = theRoom01.get()
+      .then(doc => {
+          if (!doc.exists) {
+              console.log('No such document!');
+          } else {
+              console.log('Document data:', doc.data());
+              console.log('room name:', doc.data().name);
+            //  response.send("200", doc.data().name);
+            var obj = {};
+            obj.name = doc.data().name;
+              //return response.status(200).send(obj);
+              return response.json(obj);
+          }
+      })
+      .catch(err => {
+          console.log('Error getting document', err);
+      });
+
+  // END
+});
+exports.getRoomNumOfPlayers = functions.https.onRequest((request, response) => {
+  // BGN
+  //response.send("Hello from getRoomName!");
+  // VARIABLES
+  var name = "pqRooms";
+  var id = "room01";
+  var theRoom01 = db.collection(name).doc(id);
+  var getDoc02 = theRoom01.get()
+      .then(doc => {
+          if (!doc.exists) {
+              console.log('No such document!');
+          } else {
+              console.log('Document data:', doc.data());
+              console.log('numberOfPlayers:', doc.data().numOfPlayers);
+            //  response.send("200", doc.data().name);
+            var obj2 = {};
+            obj2.numOfPlayers = doc.data().numOfPlayers;
+              //return response.status(200).send(obj);
+              return response.json(obj2);
+          }
+      })
+      .catch(err => {
+          console.log('Error getting document', err);
+      });
+
   // END
 });
 exports.roomController = functions.https.onRequest((request, response) => {
   // BGN
   //response.send("Hello from roomController!");
-  console.log("BGN roomController");
-  var id = "room01";
-  var theRoom01 = db.collection('pqRooms').doc(id).get();
-  response.send("theRoom01: " + theRoom01);
-  console.log("theRoom01: ", theRoom01);
-  console.log("END roomController");
+  console.log("--------------------BGN roomController---------------------------");
+
+
+// getRoomName:{
+//   var getDoc = theRoom01.get()
+//       .then(doc => {
+//           if (!doc.exists) {
+//               console.log('No such document!');
+//           } else {
+//               console.log('Document data:', doc.data());
+//               console.log('room name:', doc.data().name);
+//             //  response.send("200", doc.data().name);
+//             var obj = {};
+//             obj.name = doc.data().name;
+//               //return response.status(200).send(obj);
+//               return response.json(obj);
+//           }
+//       })
+//       .catch(err => {
+//           console.log('Error getting document', err);
+//       });
+//
+// }
+getRoomNumOfPlayers: {
+  var getDoc02 = theRoom01.get()
+      .then(doc => {
+          if (!doc.exists) {
+              console.log('No such document!');
+          } else {
+              console.log('Document data:', doc.data());
+              console.log('room name:', doc.data().numOfPlayers);
+            //  response.send("200", doc.data().name);
+            var obj2 = {};
+            obj.name = doc.data().numOfPlayers;
+              //return response.status(200).send(obj);
+              return response.json(obj2);
+          }
+      })
+      .catch(err => {
+          console.log('Error getting document', err);
+      });
+
+}
+//console.log(theRoom01);
+
+
+ // Promise.all([theRoom01]).then(function(snapshots) {
+ //   console.log("theRoom00: ", theRoom01);
+ //   console.log("theRoom01: ", snapshots);
+ //   console.log("theRoom02: ", snapshots[0]);
+ //   console.log("theRoom03: ", snapshots[0]._ref);
+ //
+ //   //response.render("cac", firebaseData);
+ //   response.send("theRoom01: " + snapshots.QueryDocumentSnapshot);
+ // });
+
+
+  //response.send("theRoom01: " + theRoom01);
+  //console.log("theRoom01: ", theRoom01);
+  console.log("-----------------------END roomController-------------------------");
   // END
 });
 exports.judgeController = functions.https.onRequest((request, response) => {
 // BGN judgeController
     // Logging where we are
     //response.send("Hello from judgeController!");
-    console.log("Hello console from judgeController!");
+  //  console.log("Hello console from judgeController!");
 
     // Testing a room one
     var fromTheRoom = roomController.getRoomName();         // room01.name = "RM01" irebase.firestore().collection('restaurants').doc(id).get();
