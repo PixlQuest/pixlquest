@@ -1,0 +1,50 @@
+[debug] [2018-03-22T00:50:52.361Z] ----------------------------------------------------------------------
+[debug] [2018-03-22T00:50:52.364Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\zhaying\AppData\Local\Yarn\Data\global\node_modules\firebase-tools\bin\firebase serve --only functions
+[debug] [2018-03-22T00:50:52.364Z] CLI Version:   3.17.7
+[debug] [2018-03-22T00:50:52.364Z] Platform:      win32
+[debug] [2018-03-22T00:50:52.364Z] Node Version:  v9.8.0
+[debug] [2018-03-22T00:50:52.365Z] Time:          Wed Mar 21 2018 20:50:52 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-03-22T00:50:52.365Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-03-22T00:50:52.378Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-03-22T00:50:52.378Z] > authorizing via signed-in user
+[debug] [2018-03-22T00:50:52.381Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-03-22T00:50:52.381Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/fF99P7nLoGgGjLc4jPg3Irvscgg11PrSmUiASu_akLE',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Mar 21 2018 20:50:52 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-03-22T00:50:52.553Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-22T00:50:52.561Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/snapquest-aac81  
+  
+ Wed Mar 21 2018 20:50:52 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-03-22T00:50:52.968Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-22T00:50:52.968Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/snapquest-aac81/tokens  
+  
+ Wed Mar 21 2018 20:50:52 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-03-22T00:50:53.368Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-22T00:50:53.368Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/snapquest-aac81  
+  
+ Wed Mar 21 2018 20:50:53 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-03-22T00:50:53.649Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'c:\project03\pixlquest'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-03-22T00:50:54.426Z] Fetching environment
+[debug] [2018-03-22T00:50:54.433Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/700236181225:getServerAppConfig  
+  
+ Wed Mar 21 2018 20:50:54 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-03-22T00:50:55.361Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-22T00:50:55.361Z] Starting @google-cloud/functions-emulator
+[debug] [2018-03-22T00:50:57.409Z] Parsing function triggers
+[info] +  functions: listAllUsers: http://localhost:5000/snapquest-aac81/us-central1/listAllUsers
+[info] +  functions: usersInRoom01: http://localhost:5000/snapquest-aac81/us-central1/usersInRoom01
+[info] +  functions: helloWorld: http://localhost:5000/snapquest-aac81/us-central1/helloWorld
+[info] +  functions: categoryController: http://localhost:5000/snapquest-aac81/us-central1/categoryController
+[info] +  functions: getRoomName: http://localhost:5000/snapquest-aac81/us-central1/getRoomName
+[info] +  functions: getRoomNumOfPlayers: http://localhost:5000/snapquest-aac81/us-central1/getRoomNumOfPlayers
+[info] +  functions: roomController: http://localhost:5000/snapquest-aac81/us-central1/roomController
+[info] +  functions: judgeController: http://localhost:5000/snapquest-aac81/us-central1/judgeController
