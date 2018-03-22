@@ -1,7 +1,13 @@
 require.config({
     paths: {
         'jquery': "vendor/jquery-3.3.1.min",
-        'firebase': ['https://www.gstatic.com/firebasejs/3.0.0/firebase', 'libs/firebase'],
+        //'firebase': ['https://www.gstatic.com/firebasejs/3.0.0/firebase', 'libs/firebase'],
+        'firebase': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-app', 'libs/firebase'],
+        'fireauth': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-auth', 'libs/fireauth'],
+        'firedatabase': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-database', 'libs/firedatabase'],
+        'firestorage': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-storage', 'libs/firestorage'],
+        //https://www.gstatic.com/firebasejs/4.12.0/firebase-database
+        'firestore': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore', 'libs/firestore'],
         'firebaseui': ['https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui', 'libs/firebaseui']
     },
     shim: {
@@ -11,17 +17,28 @@ require.config({
         'firebaseui': {
             exports: 'firebaseui'
         },
+        'fireauth': {
+            exports: 'fireauth'
+        },
+        'firedatabase': {
+            exports: 'firedatabase'
+        },
+        'firestorage': {
+            exports: 'firestorage'
+        },
+        'firestore': {
+            exports: 'firestore'
+        },
     }
 });
-require(["firebase","firebaseui", "jquery", ["Employee"]], function (firebase, firebaseui, $, test) {
+
+require(["firebase","fireauth","firedatabase","firestorage","firestore","firebaseui", "jquery"], function (firebase, fireauth, firedatabase, firestorage, firestore, firebaseui, $) {
     // "use strict";
 
     console.log("firebase: ", firebase);  // undefined
     console.log("firebaseui: ", firebaseui);  // undefined
-    console.log("juqery: ",$);         // function m(a, b)
-    console.log("test: ",test);
-//alert(name);
-alert();
+    console.log("jquery: ",$);         // function m(a, b)
+
       var messagesList = document.getElementById('messages'),
           textInput = document.getElementById('text'),
           sendButton = document.getElementById('send'),
@@ -48,9 +65,11 @@ alert();
         storageBucket: "snapquest-aac81.appspot.com",
         messagingSenderId: "700236181225"
       };
+      require("firestore");
       // Get the Firebase app and all primitives we'll use
       var app = firebase.initializeApp(config),
-          database = app.database(),
+        database = app.database(),
+          db = app.firestore(),
           auth = app.auth(),
           storage = app.storage();
 
@@ -71,7 +90,7 @@ alert();
 
       // Show a popup when the user asks to sign in with Google
       googleLogin.addEventListener('click', function(e) {
-        console.log("You are here GoogleAuth")
+        console.log("You are here GoogleAuth");
         auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
       });
       // Allow the user to sign out
@@ -80,14 +99,42 @@ alert();
       });
       // When the user signs in or out, update the username we keep for them
       auth.onAuthStateChanged(function(user) {
+        //Check for googleAuthUser in pqUsers collection
+        db.collection("pqUsers").where("id", "==", user.uid).get().then((querySnapshot) => {
+          if (querySnapshot.empty) {
+            addUser(user);
+          } else {
+            console.log(user.displayName + " is already present");
+            // querySnapshot.forEach((doc) => {// loop through users
+            //   if (!doc.exists) {
+            //     console.log("doc does not exist");
+            //
+            //   } else {
+            //     console.log("doc does exist", doc);
+            //       //  var obj = {};
+            //       //obj.name = doc.data().name;
+            //       //return response.status(200).send(obj);
+            //       //return response.json(obj);
+            //     }
+            //     console.log(`${doc.id} => ${doc.data()}`);
+            //   }); //end querySnapshot.forEach
+          }
+          })
+          .catch(err => {
+              console.log('Error getting document', err);
+              return response.json(err);
+          }); //end db.collection
         if (user) {
-          setUsername(user.displayName);
+          setUsername(user.displayName,user);
+          // TEST
+          //console.log("db", db);  //Check if firesotre exist
         }
         else {
           // User signed out, set a default username
           setUsername("Web");
         }
       });
+
 
       function handleFileSelect(e) {
         var file = e.target.files[0];
@@ -109,19 +156,40 @@ alert();
       }
       file.addEventListener('change', handleFileSelect, false);
 
-
+      function addUser(user) {
+        var objPqUser = {
+          id: user.uid,
+          isJudge: false,
+          isWinner:false,
+          name: user.displayName,
+          rank: 0,
+          room: "WR"
+        };
+        console.log("addUser user",objPqUser);
+        db.collection("pqUsers").add(objPqUser)
+        .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
+      }
       function setUsername(newUsername) {
         if (newUsername == null) {
             newUsername = "Web";
         }
         console.log(newUsername);
+
+
         username = newUsername;
         var isLoggedIn = username != 'Web';
+        //THIS IS THE WAITING ROOM VIEW
         usernameElm.innerText = newUsername;
         logout.style.display = isLoggedIn ? '' : 'none';
         facebookLogin.style.display = isLoggedIn ? 'none' : '';
         googleLogin.style.display = isLoggedIn ? 'none' : '';
-      }
+
+      } //end setUsername
 
       function addMessage(chat) {
         var li = document.createElement('li');
