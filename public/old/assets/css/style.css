@@ -26,7 +26,7 @@ html{
     padding: 1rem 2rem;
 }
 .active{
-    display: block;
+    display: block; 
 }
 /*
    <li><a href="#" data-target="login" class="nav-link">Login</a></li>
@@ -40,7 +40,7 @@ html{
 #waitingroom{
     background-color: hsl(180, 50%, 80%);
 }
-#cameraroom{
+#camera{
     background-color: hsl(240, 50%, 80%);
 }
 #judge{
@@ -55,22 +55,3 @@ h1{
     font-size: 5rem;
     font-weight: 900;
 }
-/*** BGN CAMERA CSS ***/
-canvas {
-  background-color: #ccc;
-  max-width: 100%;
-  width: 300px;
-}
-
-div#container {
-margin: 0 auto 0 auto;
-max-width: 40em;
-padding: 1em 1.5em 1.3em 1.5em;
-}
-
-video {
-  background: #222;
-  margin: 0 0 20px 0;
-  width: 300px;
-}
-/*** END CAMERA CSS ***/

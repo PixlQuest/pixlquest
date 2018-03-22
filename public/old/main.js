@@ -1,15 +1,12 @@
 require.config({
     paths: {
         'jquery': "assets/js/jquery-3.3.1.min",
-        'pqcamera': "assets/js/pqcamera",
         'firebase': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-app', 'libs/firebase'],
         'fireauth': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-auth', 'libs/fireauth'],
         'firedatabase': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-database', 'libs/firedatabase'],
         'firestorage': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-storage', 'libs/firestorage'],
         'firestore': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore', 'libs/firestore'],
-        'firebaseui': ['https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui', 'libs/firebaseui'],
-        'webrtc': ['https://webrtc.github.io/adapter/adapter-latest','libs/webrtc'],
-        // 'camera': ['assets/js/camera']
+        'firebaseui': ['https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui', 'libs/firebaseui']
     },
     shim: {
         'firebase': {
@@ -29,13 +26,11 @@ require.config({
         },
         'firestore': {
             exports: 'firestore'
-        }
+        },
     }
 });
-require(["firebase","fireauth","firedatabase","firestorage","firestore","firebaseui", "webrtc", "pqcamera", "jquery"], function (
-  firebase, fireauth, firedatabase, firestorage, firestore, firebaseui, webrtc, pqcamera, $) {
-console.log("webrtc: ", webrtc);
-console.log("pqcamera: ", pqcamera);
+require(["firebase","fireauth","firedatabase","firestorage","firestore","firebaseui", "jquery"], function (firebase, fireauth, firedatabase, firestorage, firestore, firebaseui, $) {
+  
   // On page elements naming
   var messagesList = document.getElementById('messages'),
           textInput = document.getElementById('text'),
@@ -48,7 +43,7 @@ console.log("pqcamera: ", pqcamera);
           usernameElm = document.getElementById('username'),
           password = document.getElementById('password'),
           username = "Web";
-
+  
   //Firebase config for init
   var config = {
         apiKey: "AIzaSyA1SgiyAGh_uUPmTcrs_yK1TUT6GVFyxww",
@@ -58,45 +53,45 @@ console.log("pqcamera: ", pqcamera);
         storageBucket: "snapquest-aac81.appspot.com",
         messagingSenderId: "700236181225"
       };
-
+  
   //Weird require needed here
   require("firestore");
-
+  
   // Get the Firebase app and all primitives we'll use
       var app = firebase.initializeApp(config),
         database = app.database(),
           db = app.firestore(),
           auth = app.auth(),
           storage = app.storage();
-
+  
   // Creating a reference to the waiting room chat
   var databaseRef = database.ref().child('chat');
-
+  
   // Event listener for the send button
   sendButton.addEventListener('click', function(evt) {
         var chat = { name: username, message: textInput.value };
         databaseRef.push().set(chat);
         textInput.value = '';
       });
-
+  
   // Listen for when child nodes get added to the collection
   databaseRef.on('child_added', function(snapshot) {
     // Get the chat message from the snapshot and add it to the UI
     var chat = snapshot.val();
     addMessage(chat);
   });
-
+  
   // Show a popup when the user asks to sign in with Google
   googleLogin.addEventListener('click', function(e) {
     console.log("You are here GoogleAuth");
     auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   });
-
+  
   // Allow the user to sign out
   logout.addEventListener('click', function(e) {
     auth.signOut();
   });
-
+  
   // When the user signs in or out, update the username we keep for them
       auth.onAuthStateChanged(function(user) {
         if(user.uid) {
@@ -107,8 +102,8 @@ console.log("pqcamera: ", pqcamera);
           history.pushState({}, currentPage, `#${currentPage}`);
           document.getElementById(currentPage).dispatchEvent(new Event('show'));
         } //end if user.uid
-
-
+        
+        
         //Check for googleAuthUser in pqUsers collection
         db.collection("pqUsers").where("id", "==", user.uid).get().then((querySnapshot) => {
           if (querySnapshot.empty) {
@@ -144,7 +139,7 @@ console.log("pqcamera: ", pqcamera);
           setUsername("Web");
         }
       });
-
+  
   //Store and handle file for firebase storage
   function handleFileSelect(e) {
         var file = e.target.files[0];
@@ -164,10 +159,10 @@ console.log("pqcamera: ", pqcamera);
           textInput.value = downloadUrl;
         });
       }
-
+  
   //Add file listener
   file.addEventListener('change', handleFileSelect, false);
-
+  
   //Add user to the pqUsers collection in firebase firestore
   function addUser(user) {
       var objPqUser = {
@@ -187,9 +182,9 @@ console.log("pqcamera: ", pqcamera);
             console.error("Error adding document: ", error);
           });
   } //end function addUser
+    
 
-
-
+  
   // Set the username when logged in
   function setUsername(newUsername) {
         if (newUsername == null) {
@@ -205,9 +200,9 @@ console.log("pqcamera: ", pqcamera);
         logout.style.display = isLoggedIn ? '' : 'none';
         //facebookLogin.style.display = isLoggedIn ? 'none' : '';
         googleLogin.style.display = isLoggedIn ? 'none' : '';
-
+  
   } //end setUsername
-
+  
   // Add a message to the waiting room chat
   function addMessage(chat) {
         var li = document.createElement('li');
@@ -231,27 +226,24 @@ console.log("pqcamera: ", pqcamera);
         messagesList.appendChild(li);
         li.scrollIntoView(false);
         sendButton.scrollIntoView(false);
-
+    
   } //end addMessage function
-
+  
   // Set a default username
   setUsername('Web');
-
-
+  
 
 $( document ).ready(function() {
-
   // add pqSpa
   const pqSpa = {
     pages: [],
     show: new Event('show'),
     init: function(){
-
         pqSpa.pages = document.querySelectorAll('.page');
         pqSpa.pages.forEach((pg)=>{
             pg.addEventListener('show', pqSpa.pageShown);
         })
-
+        
         document.querySelectorAll('.nav-link').forEach((link)=>{
             link.addEventListener('click', pqSpa.nav);
         })
@@ -286,14 +278,10 @@ $( document ).ready(function() {
     }
   }
   // end pqSpa
-
+  
   //call pqSpa ini function
   pqSpa.init();
-
-  // $( "#snap" ).click(function() {
-  //   snap();
-  // });
-
+  
   //Test document ready
   console.log( "ready!" );
 
