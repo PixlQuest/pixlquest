@@ -4,7 +4,7 @@ const functions = require('firebase-functions');
 admin.initializeApp(functions.config().firebase);
 
 var db = admin.firestore();
-var sfRef = db.collection('pqRooms').doc('room01');
+//var sfRef = db.collection('pqRooms').doc('room01');
 
 // sfRef.getCollections().then(collections => {
 //     collections.forEach(collection => {
@@ -13,11 +13,11 @@ var sfRef = db.collection('pqRooms').doc('room01');
 // });
 
 // Create a reference to the cities collection
-var pqRoomsRef = db.collection('pqRooms');
-console.log("rooms: ", pqRoomsRef );
-// Create a query against the collection
-var roomRef = pqRoomsRef.where('name', '==', 'RM01');
-console.log("room: ", roomRef );
+// var pqRoomsRef = db.collection('pqRooms');
+// console.log("rooms: ", pqRoomsRef );
+// // Create a query against the collection
+// var roomRef = pqRoomsRef.where('name', '==', 'RM01');
+// console.log("room: ", roomRef );
 //const firestore = require('firebase-firestore');
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -28,10 +28,62 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 //  console.log("Hello console from Firebase!");
   // END
 });
+exports.listAllUsers = functions.https.onRequest((request, response) => {
+  function listAllUsers(nextPageToken) {
+  // List batch of users, 1000 at a time.
+  admin.auth().listUsers(1000, nextPageToken)
+    .then(function(listUsersResult) {
+      listUsersResult.users.forEach(function(userRecord) {
+        console.log("user", userRecord.toJSON());
+      });
+      if (listUsersResult.pageToken) {
+        // List next batch of users.
+        listAllUsers(listUsersResult.pageToken)
+      }
+    })
+    .catch(function(error) {
+      console.log("Error listing users:", error);
+    });
+}
+// Start listing users from the beginning, 1000 at a time.
+listAllUsers();
+});
 exports.categoryController = functions.https.onRequest((request, response) => {
   // BGN
   response.send("Hello from categoryController!");
 //  console.log("Hello console from categoryController!");
+  // END
+});
+exports.usersInRoom01 = functions.https.onRequest((request, response) => {
+  // BGN
+  //response.send("Hello from getRoomName!");
+  // VARIABLES
+  var name = "pqUsers"; ///pqUsers/5YVvqEWTkWXHz9rhsyOG
+  var id = "5YVvqEWTkWXHz9rhsyOG";
+  var theRoom01 = db.collection(name); //.collection("teams").whereEqualTo("owners.$uid", true)
+  var getDoc = theRoom01.get()
+      .then(snapshot => {
+          if (!snapshot.exists) {
+              console.log('No such document!');
+              var obj = {
+                "error": "42",
+                "message": "No such document!"
+              };
+              return response.json(obj);
+          } else {
+              console.log('Document data:', snapshot);
+
+            //  response.send("200", doc.data().name);
+            var obj = {};
+            obj.name = snapshot.data();
+              //return response.status(200).send(obj);
+              return response.json(obj);
+          }
+      })
+      .catch(err => {
+          console.log('Error getting document', err);
+      });
+
   // END
 });
 exports.getRoomName = functions.https.onRequest((request, response) => {
