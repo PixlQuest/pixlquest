@@ -1,0 +1,76 @@
+/**** DEFAULTS ****/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 20px;  /* 1rem will equal this now */
+    line-height: 1.6;
+    font-family: sans-serif; /* add google fonts */
+}
+/***FROM ORIGINAL ****/
+  #messages { width: 40em; border: 1px solid grey; min-height: 20em; }
+  #messages img { max-width: 240px; max-height: 160px; display: block; }
+  #header { position: fixed; top: 0; background-color: white; }
+  .push { margin-bottom: 2em; }
+  @keyframes yellow-fade { 0% {background: #f2f2b8;} 100% {background: none;} }
+  .highlight { -webkit-animation: yellow-fade 2s ease-in 1; animation: yellow-fade 2s ease-in 1; }
+
+/**** PAGES ****/
+.page{
+    display: none;
+    width: 100%;
+    min-height: 100%; /* allow for content off the bottom of the page */
+    position: fixed;  /* or absolute if the user needs to scroll for more content */
+    padding: 1rem 2rem;
+}
+.active{
+    display: block;
+}
+/*
+   <li><a href="#" data-target="login" class="nav-link">Login</a></li>
+                <li><a href="#" data-target="waitingroom" class="nav-link">WaitingRoom</a></li>
+                <li><a href="#" data-target="camera" class="nav-link">CameraRoom</a></li>
+                <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
+*/
+#login{
+    background-color: hsl(60, 50%, 80%);
+}
+#waitingroom{
+    background-color: hsl(180, 50%, 80%);
+}
+#cameraroom{
+    background-color: hsl(240, 50%, 80%);
+}
+#judge{
+    background-color: hsl(255, 50%, 80%);
+}
+h1{
+    font-size: 2rem;
+    font-weight: 600;
+    transition: all 0.4s;
+}
+.big{
+    font-size: 5rem;
+    font-weight: 900;
+}
+/*** BGN CAMERA CSS ***/
+canvas {
+  background-color: #ccc;
+  max-width: 100%;
+  width: 300px;
+}
+
+div#container {
+margin: 0 auto 0 auto;
+max-width: 40em;
+padding: 1em 1.5em 1.3em 1.5em;
+}
+
+video {
+  background: #222;
+  margin: 0 0 20px 0;
+  width: 300px;
+}
+/*** END CAMERA CSS ***/
