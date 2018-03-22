@@ -81,6 +81,7 @@ require(["firebase","firebaseui", "jquery"], function (firebase,firebaseui, $) {
       auth.onAuthStateChanged(function(user) {
         if (user) {
           setUsername(user.displayName);
+          console.log("I am logged in.");
         }
         else {
           // User signed out, set a default username
