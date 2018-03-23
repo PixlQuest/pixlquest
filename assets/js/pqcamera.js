@@ -1,6 +1,7 @@
+'use strict';
 define(["jquery"],function ($) {
-  'use strict';
-  require(["jquery"]);
+
+
 
   console.log("pqcamera is online");
 

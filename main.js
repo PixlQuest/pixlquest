@@ -36,8 +36,8 @@ require.config({
         }
     }
 });
-require(["firebase","fireauth","firedatabase","firestorage","firestore","firebaseui", "webrtc", "pqcamera", "jquery"], function (
-  firebase, fireauth, firedatabase, firestorage, firestore, firebaseui, webrtc, pqcamera, $) {
+require(["firebase","fireauth","firedatabase","firestorage","firestore","firebaseui", "webrtc", "views", "gameLogic", "pqcamera", "jquery"], function (
+  firebase, fireauth, firedatabase, firestorage, firestore, firebaseui, webrtc, views, gameLogic, pqcamera, $) {
 console.log("webrtc: ", webrtc);
 console.log("pqcamera: ", pqcamera);
   // On page elements naming
@@ -252,11 +252,11 @@ $( document ).ready(function() {
     init: function(){
 
         pqSpa.pages = document.querySelectorAll('.page');
-        pqSpa.pages.forEach((pg)=>{
+        pqSpa.pages.forEach(function(pg){
             pg.addEventListener('show', pqSpa.pageShown);
         })
 
-        document.querySelectorAll('.nav-link').forEach((link)=>{
+        document.querySelectorAll('.nav-link').forEach(function(link){
             link.addEventListener('click', pqSpa.nav);
         })
         history.replaceState({}, 'Login', '#login');
@@ -268,14 +268,14 @@ $( document ).ready(function() {
         document.querySelector('.active').classList.remove('active');
         document.getElementById(currentPage).classList.add('active');
         console.log(currentPage)
-        history.pushState({}, currentPage, `#${currentPage}`);
+        history.pushState({}, currentPage, "#${currentPage}");
         document.getElementById(currentPage).dispatchEvent(pqSpa.show);
     },
     pageShown: function(ev){
         console.log('Page', ev.target.id, 'just shown');
         let h1 = ev.target.querySelector('h1');
         h1.classList.add('big')
-        setTimeout((h)=>{
+        setTimeout(function(h){
             h.classList.remove('big');
         }, 1200, h1);
     },

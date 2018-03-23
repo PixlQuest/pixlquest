@@ -1,10 +1,15 @@
 //1. USER LOGS INTO WEBSITE BY DEFAULT THE WELCOME VIEW IS SETUP ON THE PAGE BY DEFAULT
+console.log("gameLogic is online");
 
 
-welcomeView();
+define(["jquery", "views"],function ($, view) {
 
 
+  console.log(view);
+  view.welcomeView();
 
+
+/*
 
 
 
@@ -64,7 +69,7 @@ $( "#takePhotoBtn" ).click(function() {
  }
  */
 
-
+/*
 //If judge X's a picture
 $( "#btnSetBad" ).click(function() {
 	//###E Delete current picture from firecloud
@@ -119,9 +124,9 @@ var waitingRoomView = function(){
 
 }
 */
-
+/*
 //### Need to know if the specific player/computer record judge value set to true or false
-var playerJudgeViewDecider = function(###judgeValueForPlayer){
+var playerJudgeViewDecider = function(judgeValueForPlayer){
 
 	if(judgeValueForPlayer == true){
 		judgeView();
@@ -165,7 +170,7 @@ var noWinnerView = function(){
 }
 */
 
-
+/*
 var gameOver = function(gameOverVariable){
 
 	if (gameOverVariable){
@@ -214,3 +219,5 @@ var roundEnd() = function(){
 		//send user to new game or waiting room via afterResults Function
 		setTimeout(afterResults, 7000);
 	}
+*/
+});
