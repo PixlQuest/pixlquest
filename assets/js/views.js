@@ -10,43 +10,45 @@ define(["jquery"], function ($) {
 
   //Welcome view with login screen
   this.welcomeView = function(){
-     $(".sect_top_brand").hide();
-     console.log("test worked");
+    $(".cont_main").show();
+
   }
 
   //Intro view with instructions
-  var introView = function(){
+  this.introView = function(){
+    $("").show();
 
   }
 
   //hide and show code for waitingRoom
-  var waitingRoomView = function(){
-
-  }
-
-  //hide and show code for waitingRoom
-  var waitingRoomView = function(){
+  this.waitingRoomView = function(){
+    $("").show();
 
   }
 
   //player view with camera and category word
-  var playerView = function(){
+  this.playerView = function(){
+    $("").show();
+
   	cameraSet();
   	//buttons show hide
   }
 
   //judge view with picture slider of the players images
-  var judgeView = function(){
+  this.judgeView = function(){
+    $("").show();
 
   }
 
   //shows all the final result of the round for 7 seconds before going back to the waiting area
-  var resultView = function(){
+  this.resultView = function(){
+    $("").show();
 
   }
 
   //Judge Functions
-  var noWinnerView = function(){
+  this.noWinnerView = function(){
+    $("").show();
 
   }
 

@@ -2,11 +2,14 @@
 console.log("gameLogic is online");
 
 
-define(["jquery", "views"],function ($, view) {
+define(["jquery", "views", "main"],function ($, view, main) {
 
-
-  console.log(view);
+  //When first accessing the page go to welcome section
   view.welcomeView();
+
+
+
+//  console.log(view);
 
 
 /*

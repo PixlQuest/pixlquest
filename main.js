@@ -2,6 +2,7 @@ require.config({
     paths: {
         'jquery': "assets/js/jquery-3.3.1.min",
         'views': "assets/js/views",
+        'listeners': "assets/js/listeners",
         'gameLogic': "assets/js/gameLogic",
         'pqcamera': "assets/js/pqcamera",
 
@@ -36,22 +37,26 @@ require.config({
         }
     }
 });
-require(["firebase","fireauth","firedatabase","firestorage","firestore","firebaseui", "webrtc", "views", "gameLogic", "pqcamera", "jquery"], function (
-  firebase, fireauth, firedatabase, firestorage, firestore, firebaseui, webrtc, views, gameLogic, pqcamera, $) {
-console.log("webrtc: ", webrtc);
-console.log("pqcamera: ", pqcamera);
+require(["firebase","fireauth","firedatabase","firestorage","firestore","firebaseui", "webrtc", "views", "listeners", "gameLogic", "pqcamera", "jquery"], function (
+  firebase, fireauth, firedatabase, firestorage, firestore, firebaseui, webrtc, views, listeners, gameLogic, pqcamera, $) {
+//console.log("webrtc: ", webrtc);
+//console.log("pqcamera: ", pqcamera);
   // On page elements naming
   var messagesList = document.getElementById('messages'),
           textInput = document.getElementById('text'),
           sendButton = document.getElementById('send'),
           login = document.getElementById('login'),
-          googleLogin = document.getElementById('google'),
+          googleLogin = document.getElementById('.google'),
           facebookLogin = document.getElementById('facebook'),
           signedIn = document.getElementById('loggedin'),
           logout = document.getElementById('logout'),
           usernameElm = document.getElementById('username'),
           password = document.getElementById('password'),
           username = "Web";
+
+
+  //Weird require needed here
+  require("firestore");
 
   //Firebase config for init
   var config = {
@@ -63,8 +68,7 @@ console.log("pqcamera: ", pqcamera);
         messagingSenderId: "700236181225"
       };
 
-  //Weird require needed here
-  require("firestore");
+
 
   // Get the Firebase app and all primitives we'll use
       var app = firebase.initializeApp(config),
@@ -91,7 +95,9 @@ console.log("pqcamera: ", pqcamera);
   });
 
   // Show a popup when the user asks to sign in with Google
-  googleLogin.addEventListener('click', function(e) {
+  googleLogin.addEventListener('click', function(event) {
+    event.preventDefault();
+
     console.log("You are here GoogleAuth");
     auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   });
