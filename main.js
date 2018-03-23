@@ -1,7 +1,11 @@
 require.config({
     paths: {
         'jquery': "assets/js/jquery-3.3.1.min",
+        'views': "assets/js/views",
+        'gameLogic': "assets/js/gameLogic",
         'pqcamera': "assets/js/pqcamera",
+
+
         'firebase': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-app', 'libs/firebase'],
         'fireauth': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-auth', 'libs/fireauth'],
         'firedatabase': ['https://www.gstatic.com/firebasejs/4.12.0/firebase-database', 'libs/firedatabase'],
