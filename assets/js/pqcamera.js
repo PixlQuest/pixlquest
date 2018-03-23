@@ -1,6 +1,15 @@
+'use strict';
 define(["jquery"],function ($) {
-  'use strict';
-  require(["jquery"]);
+
+
+
+  console.log("pqcamera is online");
+
+  // IF CAMERA NEEDS TO BE TURNED ON
+var useCamera = false;
+
+if(useCamera){
+
   var errorElement = document.querySelector('#errorMsg');
   var video = document.querySelector('video');
   var canvas = document.querySelector('canvas'); // holder for photo
@@ -11,8 +20,8 @@ define(["jquery"],function ($) {
 
 
   //starting state of the camera
-  $(".videoCam").show();
-  $(".picture").hide();
+  //$(".videoCam").show();
+  //$(".picture").hide();
 
 
 
@@ -103,5 +112,8 @@ define(["jquery"],function ($) {
     snap();
   });
 
+
+
+}
 
 });
