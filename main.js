@@ -208,7 +208,7 @@ var stateChangeCount = 0;
           //if(stopListening){
                 //unsubscribe
           //}
-          setCategoryInView();
+
 console.log("querySnapshot.size=", querySnapshot.size ); //RM02 0       never logged in = 1
 console.log("querySnapshot.empty=", querySnapshot.empty ); //RM02 true  never logged in = false
           if (querySnapshot.empty===false || ( querySnapshot.size === 0 && querySnapshot.empty===true )) {
@@ -220,6 +220,7 @@ console.log("querySnapshot.empty=", querySnapshot.empty ); //RM02 true  never lo
               $(".cont_main").hide();
             //  $('#login').removeClas s('active');
               $('#cameraroom').addClass('active');
+              $( '#newCatetory' ).append( setCategoryInView.theViewCategory );
             currentPage = 'cameraroom';
             history.pushState({}, currentPage, `#${currentPage}`);
             document.getElementById(currentPage).dispatchEvent(new Event('show'));
@@ -242,7 +243,7 @@ console.log("querySnapshot.empty=", querySnapshot.empty ); //RM02 true  never lo
 
 
         db.collection("pqRooms").where('name', '==', 'RM02').where('numOfPlayers', '==', 3).get().then((querySnapshot) => {
-setCategoryInView();
+
           console.log("querySnapshotRM2players3.size=", querySnapshot.size ); //RM02 0
           console.log("querySnapshotRM2players3.empty=", querySnapshot.empty );//RM02 true
           if (querySnapshot.empty === true) {
@@ -266,6 +267,7 @@ setCategoryInView();
               $(".cont_main").hide();
              $('#waitingroom').removeClass('active');
               $('#cameraroom').addClass('active');
+              $( '#newCatetory' ).append(setCategoryInView.theViewCategory);
             currentPage = 'waitingroom';
             history.pushState({}, currentPage, `#${currentPage}`);
             document.getElementById(currentPage).dispatchEvent(new Event('show'));
@@ -343,25 +345,36 @@ function delUser(firebaseAuthUser){
   var deleteDoc = db.collection('pqUsers').doc(firebaseAuthUser.uid).delete();
 
 }
-function setCategoryInView() {
-  console.log("In setCategoryInView");
-  // variables
-  var useCamera = true;
-
-  // pqRooms collection
-  var roomCategoryRef = db.collection('pqRooms');
-  var theViewCategory = roomCategoryRef.where('name', '==', 'RM02').get()
-  .then(function(snapshot){
-    console.log("categorySnapshot:",snapshot);
-  console.log("categoryIs: ",snapshot.data.category);
-  })
-  .catch(err => {
-      console.error('ERROR setCategoryInView', err);
-    }); //end catch
-  //console.log("theViewCategory: ",theViewCategory);
-}
 
 
+
+  var docRef = db.collection("pqRooms").doc("room02");
+  docRef.get().then(function(doc) {
+    if (doc.exists) {
+      console.log(doc.data().category);
+
+      var obj = {
+        theViewCategory: doc.data().category,
+        useCamera: true
+      };
+      localStorage.setItem('the_obj', JSON.stringify(obj));
+      // testing
+    console.log("categoryObj: ", obj);
+
+    //  return the_obj;
+    } else {
+        //error
+      //  console.log("Error: No such document!");
+        obj = {msg: "Error: No such document!"};
+        return obj;
+    }
+  }).catch(function(error) { console.log("Error getting document:", error); });
+console.log("----------------------");
+var setCategoryInView = JSON.parse(localStorage.getItem("the_obj") );
+console.log("setCategoryInView:", setCategoryInView );
+console.log("setCategoryInView:", setCategoryInView.theViewCategory );
+console.log("setCategoryInView:", setCategoryInView.useCamera );
+console.log("----------------------");
 //XXXdetermine available room
 function checkForAvailableRoom(firebaseAuthUser) {
   console.log("In checkForAvailableRoom");
