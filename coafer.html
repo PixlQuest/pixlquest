@@ -89,6 +89,8 @@
           <li><a href="#" data-target="cameraroom" class="nav-link">CameraRoom</a></li>
           <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
         </ol>
+        <button id="snap">Take screenshot</button>
+
         <div id="container">
           <div class="highlight"></div>
           <div class="videoCam">
@@ -98,7 +100,8 @@
             <canvas id="pic-canvas" class="snapped"></canvas>
           </div>
           <!-- gives user the option to take the photo -->
-          <button id="snap">Take screenshot</button>
+
+          <canvas id="new_canvas"></canvas>
           <!-- DEBUGGING PURPOSES
           <div id="errorMsg"></div>
           <p class="warning"><strong>Warning:</strong> if you're not using headphones, pressing play will cause feedback.</p>

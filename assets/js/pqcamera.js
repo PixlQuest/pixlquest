@@ -6,9 +6,9 @@ define(["jquery"],function ($) {
   console.log("pqcamera is online");
 
   // IF CAMERA NEEDS TO BE TURNED ON
-var useCamera = false;
+var useCamera = true;
 
-//if(useCamera){
+if(useCamera){
 
   var errorElement = document.querySelector('#errorMsg');
   var video = document.querySelector('video');
@@ -93,24 +93,54 @@ var useCamera = false;
     }
   }
 
+
+
+
+
   //when a picture is taken do the following
   var snap = function() {
     console.log("click,click!");
+
+
         // Define the size of the rectangle that will be filled (basically the entire element)
         context.fillRect(0, 0, w, h);
         // Grab the image from the video
         context.drawImage(video, 0, 0, w, h);
+
+
+        var imageIMAGE = new Image();
+        //save the picture into a variable using toDataURL
+        var savedPic = canvas.toDataURL();
+      //  console.log(savedPic);
+        //IMAGE VERSION
+        imageIMAGE.id = "new_pic";
+        imageIMAGE.src = savedPic;
+        document.getElementById('new_pic').appendChild(imageIMAGE);
+
+
+        //CANVAS VERSION
+        var ctxB = document.getElementById('new_canvas').getContext('2d');
+        var imgCANVAS = new Image();
+
+        imgCANVAS.src = savedPic;
+
+        imgCANVAS.onload = function () {
+           ctxB.drawImage(imgCANVAS,0,0, w, h);
+           console.log("done drawing");
+        }
 
         //Stop the camera after photo is taken
         var tracks = stream.getTracks();
 
         tracks.forEach(function(track) {
           track.stop();
+
+          $(".videoCam").hide();
+          $(".picture").hide();
         });
 
 
-        $(".videoCam").hide();
-        $(".picture").show();
+
       }
 
   navigator.mediaDevices.getUserMedia(constraints)
@@ -122,6 +152,6 @@ var useCamera = false;
 
 
 
-//}
+}
 
 });

@@ -9,8 +9,15 @@ define(["jquery"], function ($) {
   //Views
 
   //Welcome view with login screen
-  this.welcomeView = function(){
-    $(".cont_main").show();
+  this.welcomeView = function(status){
+
+    if(status){
+      $(".cont_main").show();
+      console.log("welcome view");
+    }
+    else{
+      $(".cont_main").show();
+    }
 
   }
 
