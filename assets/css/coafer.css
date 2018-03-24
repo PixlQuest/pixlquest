@@ -179,7 +179,7 @@ p, h1, h2, h3, h4, h5, span{
     background-image: url('../img/old-camera_B-p-500.png'), linear-gradient(to left, #ff3131, #a067e8);
     box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
     text-align: center;
-	text-indent: 99999pt;
+	text-indent: -9999px;
     background-size: 105%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -187,7 +187,6 @@ p, h1, h2, h3, h4, h5, span{
 
 .cont_top_head {
     width: 100%;
-    border-top-radius: 10px;
     background-image: -webkit-linear-gradient(right, #6e27c1, #ff86f8);
     background-image: -o-linear-gradient(right, #6e27c1, #ff86f8);
     background-image: linear-gradient(to left, #6e27c1, #ff86f8);
