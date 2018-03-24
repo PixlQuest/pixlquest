@@ -21,6 +21,7 @@
 
   </head>
   <body>
+<<<<<<< HEAD
     <header class="sect_top_brand">
         <figure class="navbar-brand d-flex flex-column align-items-center cont_brand">
             <img src="assets/img/logo_pixlquest@2x.png" alt="pixlquest_logo" class="img_logo">
@@ -142,34 +143,9 @@
           <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
         </ol>
       </div>
+=======
+>>>>>>> origin/dev
 
-      <div class="page" id="waitingroom">
-
-        <h1>WaitingRoom</h1>
-        <ol>
-          <li><a href="#" data-target="login" class="nav-link">Login</a></li>
-          <li><a href="#" data-target="waitingroom" class="nav-link">WaitingRoom</a></li>
-          <li><a href="#" data-target="cameraroom" class="nav-link">CameraRoom</a></li>
-          <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
-        </ol>
-
-        <div id='header'>
-          <label for='username'><img src="https://www.gstatic.com/images/icons/material/system/1x/account_box_black_24dp.png" width="24"/></label>
-          <span id='username'></span>
-          <button id='logout' class='idp-button'>Sign out</button>
-        </div><!-- ./#header -->
-
-        <div class="push"></div>
-        <ul id='messages'></ul>
-
-        <div id='footer'>
-          <img src="https://www.gstatic.com/images/icons/material/system/1x/add_a_photo_black_24dp.png" width="24"/>
-          <input type="file" id="file" name="file">
-          <input id='text'>
-          <button id='send'>Send</button>
-        </div><!-- ./#footer -->
-
-      </div><!-- ./#waitingroom -->
 
       <div class="page" id="cameraroom">
         <h1>CameraRoom</h1>
@@ -179,6 +155,8 @@
           <li><a href="#" data-target="cameraroom" class="nav-link">CameraRoom</a></li>
           <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
         </ol>
+        <button id="snap">Take screenshot</button>
+
         <div id="container">
           <div class="highlight"></div>
           <div class="videoCam">
@@ -188,7 +166,9 @@
             <canvas id="pic-canvas" class="snapped"></canvas>
           </div>
           <!-- gives user the option to take the photo -->
-          <button id="snap">Take screenshot</button>
+          <image id="new_pic">
+          <canvas id="new_canvas"></canvas>
+          hello
           <!-- DEBUGGING PURPOSES
           <div id="errorMsg"></div>
           <p class="warning"><strong>Warning:</strong> if you're not using headphones, pressing play will cause feedback.</p>
