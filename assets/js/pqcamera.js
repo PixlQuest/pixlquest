@@ -23,7 +23,12 @@ if(useCamera){
   //$(".videoCam").show();
   //$(".picture").hide();
 
-
+  console.log("----------------------");
+  var setCategoryInView = JSON.parse(localStorage.getItem("the_obj") );
+  console.log("pqcamera setCategoryInView:", setCategoryInView );
+  console.log("pqcamera setCategoryInView:", setCategoryInView.theViewCategory );
+  console.log("pqcamera setCategoryInView:", setCategoryInView.useCamera );
+  console.log("----------------------");
 
 
 
