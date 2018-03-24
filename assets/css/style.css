@@ -2,6 +2,12 @@ p, h1, h2, h3, h4, h5, span{
     font-family: 'Open Sans', sans-serif;
 }
 
+body{
+  background-image: url("../img/pixelquestbg.jpg");
+  color: white;
+}
+
+
 .cont_brand{
     width: 20%;
     margin-left: 150px;
@@ -264,21 +270,22 @@ html{
                 <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
 */
 #login{
-    background-color: hsl(60, 50%, 80%);
+/*  background-color: hsl(60, 50%, 80%); */
 }
 #waitingroom{
-    background-color: #8511CE;
+  /*  background-color: #8511CE; */
 }
 #cameraroom{
-    background-color: hsl(240, 50%, 80%);
+  /*  background-color: hsl(240, 50%, 80%); */
 }
 #judge{
-    background-color: hsl(255, 50%, 80%);
+  /*  background-color: hsl(255, 50%, 80%); */
 }
 h1{
     font-size: 2rem;
     font-weight: 600;
     transition: all 0.4s;
+    color: white;
 }
 .big{
     font-size: 5rem;
@@ -300,9 +307,19 @@ padding: 1em 1.5em 1.3em 1.5em;
 #logout{
 }
 
+#gum-local{
+   margin: 0 auto; width: 400px;
+}
 video {
   background: #222;
   margin: 0 0 20px 0;
   width: 300px;
+}
+
+.videoCam{
+  width: 300px;
+  background-color: purple;
+  margin-left: auto;
+  margin-right: auto;
 }
 /*** END CAMERA CSS ***/

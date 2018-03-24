@@ -3,10 +3,8 @@ console.log("Views.js is online");
 
 
 
-define(["jquery"], function ($) {
+define(["jquery", "pqcamera"], function ($, pqcamera) {
 
-
-  //Views
 
   //Welcome view with login screen
   this.welcomeView = function(status){
@@ -25,6 +23,10 @@ define(["jquery"], function ($) {
   this.introView = function(){
     $("").show();
 
+  }
+  this.charlie = function(){
+    var charlieIn = 100;
+    return charlieIn;
   }
 
   //hide and show code for waitingRoom

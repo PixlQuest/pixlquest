@@ -1,14 +1,22 @@
 
-define(["jquery"],function ($) {
+define(["jquery", "main", "views"],function ($, main, view) {
   console.log("pqcamera is online");
 
 
 
+
+
+//
+// cameraObj = {};
+// setCategoryInView = localStorage.setItem('the_obj', JSON.stringify(cameraObj));
+//
   // IF CAMERA NEEDS TO BE TURNED ON
-var useCamera = true;
+  console.log("####################################");
+  //console.log("BRAVO from pqcamera: " + main.bravo );
+  console.log("####################################");
 
-if(useCamera){
 
+  var theCamera = function(){
   var errorElement = document.querySelector('#errorMsg');
   var video = document.querySelector('video');
   var canvas = document.querySelector('canvas'); // holder for photo
@@ -17,27 +25,6 @@ if(useCamera){
 
   // variables for later use.
   var w, h, ratio;
-
-
-  //starting state of the camera
-  //$(".videoCam").show();
-  //$(".picture").hide();
-
-  console.log("----------------------");
-  var setCategoryInView = JSON.parse(localStorage.getItem("the_obj") );
-  console.log("pqcamera setCategoryInView:", setCategoryInView );
-  console.log("pqcamera setCategoryInView:", setCategoryInView.theViewCategory );
-  console.log("pqcamera setCategoryInView:", setCategoryInView.useCamera );
-  console.log("----------------------");
-
-
-
-
-  /*
-  switching cameras
-  var front = false;
-  document.getElementById('flip-button').onclick = function() { front = !front; };
-  */
 
   // Put variables in global scope to make them available to the browser console.
   var constraints = window.constraints = {
@@ -61,9 +48,6 @@ if(useCamera){
       }, false);
 
 
-
-
-
   function handleSuccess(stream) {
     var videoTracks = stream.getVideoTracks();
 
@@ -72,8 +56,7 @@ if(useCamera){
     };
     window.stream = stream; // make variable available to browser console
     video.srcObject = stream;
-
-  }
+    }
 
   //if it dont work print this.
   function handleError(error) {
@@ -128,8 +111,16 @@ if(useCamera){
         ctv.drawImage(img,0,0,w,h); // Or at whatever offset you like
       };
       img.src = savedPic;
-    //uploa  var uploadTask = storageRef.child('images/' + "apple").put(blob);
+      uploadPic(savedPic);
 
+      //Stop the camera after photo is taken
+      var tracks = stream.getTracks();
+
+      tracks.forEach(function(track) {
+        track.stop();
+      });  //tracks
+    //uploa  var uploadTask = storageRef.child('images/' + "apple").put(blob);
+}
 
       function uploadPic(savedPic) {
             var file = savedPic;
@@ -147,42 +138,20 @@ if(useCamera){
               var downloadUrl = uploadTask.snapshot.downloadURL;
               // Set the download URL to the message box, so that the user can send it to the database
               textInput.value = downloadUrl;
-            });
-          }
-/*
-        //CANVAS VERSION
-        var ctxB = document.getElementById('new_canvas').getContext('2d');
-        var imgCANVAS = new Image();
+            }); //upload task
+          } //upload pic
 
-        imgCANVAS.src = savedPic;
-
-        imgCANVAS.onload = function () {
-           ctxB.drawImage(imgCANVAS,0,0, w, h);
-           console.log("done drawing");
-        }
-
-        //Stop the camera after photo is taken
-        var tracks = stream.getTracks();
-
-        tracks.forEach(function(track) {
-          track.stop();
-
-
-        });
-
-*/
-
-      }
 
   navigator.mediaDevices.getUserMedia(constraints)
   .then(handleSuccess).catch(handleError);
 
   $( "#snap" ).click(function() {
     snap();
-  });
+  }); //snap
 
 
 
-}
 
-});
+// return this;
+} //camera function
+}); //define

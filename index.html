@@ -20,7 +20,14 @@
 
   </head>
   <body>
-    <button id='logout' class='idp-button'>Sign out</button>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-lg-12 mt-2">
+            <button id='logout' class='idp-button btn btn-primary '>Sign out</button>
+        </div>
+      </div>
+    </div>
+
 
     <main>
       <section class="sect_top_brand">
@@ -90,7 +97,7 @@
 
 
       <div class="page" id="cameraroom">
-        <h1>CameraRoom</h1>
+        <h1>CameraRoom</h1><br />
         <h5 id="newCatetory"></h5>
 
         <div id="container">
@@ -99,12 +106,9 @@
             <video id="gum-local" autoplay playsinline></video>
           </div>
           <div class="picture">
-            <canvas id="pic-canvas" class="snapped"></canvas>
+            <canvas id="new_canvas"></canvas>
+          </div>
 
-          </div>
-          <div class="picture">
-            <canvas id="pic-can" class="snapped"></canvas>
-          </div>
 
           <!-- gives user the option to take the photo -->
           <button id="snap">Take screenshot</button>
