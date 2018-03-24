@@ -13,27 +13,62 @@
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+      <!-- google font Open Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Varela+Round" rel="stylesheet">
 <!--    <link rel="stylesheet" href="assets/css/style.css">-->
     <!-- app styles -->
     <link href="assets/css/coafer.css" rel="stylesheet" type="text/css">
 
   </head>
   <body>
-    <section class="sect_top_brand">
-        <div class="cont_brand">
-            <img src="assets/img/logo_pixlquest@2x.png" width="65" class="img_brand">
-            <div class="text-block">PixlQuest</div>
-            <div>Snap it man!</div>
+    <header class="sect_top_brand">
+        <figure class="navbar-brand d-flex flex-column align-items-center cont_brand container-fluid">
+            <img src="assets/img/logo_pixlquest@2x.png" alt="pixlquest_logo" class="img_logo">
+            <p class="p_logo">pixlquest</p>
+            <p class="sub_slogan">Snap it man</p>
+        </figure>
+    </header>
+    <section class="main_cont d-flex align-items-center">
+      <div class="d-flex justify-content-center container-fluid">
+        <div class="card d-flex card_login justify-content-center">
+          <div class="card-body cont_login d-flex flex-column justify-content-around align-items-center">
+            <div class="cont_img_login "></div>
+            <button class="btn_base google button align-self-center" id="google" data-target="waitingroom">Login with google</button>
+          </div>
         </div>
-    </section>
-    <section class="cont_main container">
-      <div class="cont_login">
-        <div class="cont_img_login"></div>
-        <button href="#" class="btn_base google button" id="google" data-target="waitingroom">Login with google</button>
       </div>
     </section>
-<!--
+      <section class="main_cont">
+      <div class="d-flex justify-content-center container-fluid">
+        <div class="card d-flex card_waiting justify-content-center">
+          <div class="card-body d-flex justify-content-around align-items-center flex-column">
+              <h1 class="head_waiting">Waiting room</h1>
+            <div class="d-flex wrap_players justify-content-around align-items-center">
+              <div class="cont_players align-self-end"><h2 class="down_text">Player 1</h2></div>
+              <div class="cont_players top_move align-self-start"><h2 class="down_text">You</h2></div>
+              <div class="cont_players align-self-end">
+                <h2 class="down_text">Player 2 </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      <section class="main_cont back_pixlquest">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <div class="card card_shooting">
+          <div class="card-header cont_top_head">
+                <h1 class="head_shoot text-uppercase align-text-top">Word: Apple</h1>
+            </div>
+			  <div class="card-body">
+				  <img src="assets/img/word_cat.png" class="img-fluid" alt="Responsive image">
+			  </div>
+            <div class="card-body align-self-center">
+            </div>
+        </div>
+        <a href="#" class="btn btn_base snap">Snap it!</a>
+      </div>
+    </section>
     <main class="sect">
       
       <div class="page active" id="login">
@@ -51,7 +86,6 @@
           <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
         </ol>
       </div>
--->
 
       <div class="page" id="waitingroom">
 
