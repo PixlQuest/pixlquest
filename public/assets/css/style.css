@@ -1,0 +1,325 @@
+p, h1, h2, h3, h4, h5, span{
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+  background-image: url("../img/pixelquestbg.jpg");
+  color: white;
+}
+
+
+.cont_brand{
+    width: 20%;
+    margin-left: 150px;
+    margin-top: 30px;
+}
+
+.main_cont{
+    margin: 0 auto;
+    width: 100%;
+	height: 80vh;
+}
+
+.cont_btns{
+    width: 100%;
+    text-align: center;
+}
+
+.btn_base{
+    border-radius: 60px;
+    padding: 20px 40px;
+    font-size: 14px;
+    font-weight: regular;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+    text-transform: uppercase;
+	margin-top: 30px;
+}
+
+.btn_base.google {
+  background-color: #db3329;
+  background-image: url('../img/g_icon2x.png');
+  background-position: 30px 50%;
+  background-repeat: no-repeat;
+  width: 70%;
+}
+
+
+.facebook{
+    background-color: #3558e6;
+    background-image: url(../img/facebook@2x.png) repeat-x;
+    background-position: left;
+}
+
+.google{
+    background-color: #db3329;
+}
+.img_logo {
+    margin-top: 17px;
+	height: 100px;
+}
+
+.p_logo {
+  margin-top: 17px;
+  margin-bottom: 2px;
+  font-family: 'Varela Round', sans-serif;
+  color: #7f1879;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.sub_slogan {
+	font-size: 12px;
+}
+
+.sect_top_brand {
+	margin: 0;
+	height: 20vh;
+}
+
+/*
+.cont_main {
+    padding: 60px 0;
+    height: 60vh;
+}
+*/
+
+.cont_login {
+  height: 60%;
+  border: 1px solid #7f1879;
+  border-radius: 10px;
+  background-color: #fff;
+  background-image: url('../img/pixels@2x.png');
+  background-position: 50% 97%;
+  background-repeat: repeat-x;
+  box-shadow: 8px 8px 20px -10px rgba(0, 0, 0, .5);
+  padding-bottom: 40px;
+}
+
+.cont_img_login {
+  width: 250px;
+  height: 250px;
+  margin-bottom: 25px;
+  background-image: url('../img/old-camera_B.png');
+  background-position: 50% 50%;
+  background-size: 333px;
+  background-repeat: no-repeat;
+}
+
+.card_login, .card_waiting, .card_shooting{
+	width: 30%;
+    border: 0;
+}
+
+.cont_waiting {
+	height: 65vh;
+	border: 1px solid #7f1879;
+	border-radius: 10px;
+	box-shadow: 8px 8px 20px -10px rgba(0, 0, 0, .5);
+}
+
+.cont_players {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background-image: url(../img/icon_person@2x.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-color: #a067e8;
+    box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+}
+
+
+.wrap_players {
+    width: 300px;
+    height: 300px;
+    background-image: url("../img/Group 123@2x.png");
+	background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+.down_text {
+    text-align: center;
+    padding-top: 100px;
+    position: relative;
+    top: 15px;
+    color: #9B4EE4;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.1rem;
+}
+
+.top_move {
+    margin-top: -30px;
+}
+
+.head_waiting {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 3rem;
+  letter-spacing: normal;
+  text-align: center;
+  color: #7f1879;
+  display: block;
+  height: 80px;
+}
+
+.snap {
+	position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 60px;
+	background-image: url('../img/old-camera_B-p-500.png');
+    background-image: url('../img/old-camera_B-p-500.png'), linear-gradient(to left, #ff3131, #a067e8);
+    box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16);
+    text-align: center;
+	text-indent: 99999pt;
+    background-size: 105%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.cont_top_head {
+    width: 100%;
+    border-top-radius: 10px;
+    background-image: -webkit-linear-gradient(right, #6e27c1, #ff86f8);
+    background-image: -o-linear-gradient(right, #6e27c1, #ff86f8);
+    background-image: linear-gradient(to left, #6e27c1, #ff86f8);
+}
+
+.card-header:first-child{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	height: 80px;
+}
+
+.head_shoot {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    text-transform: capitalize;
+	padding-top: 15px;
+}
+
+.back_pixlquest {
+	background: url(../img/pixels@2x.png);
+	background-position: bottom;
+    background-repeat: repeat-x;
+}
+
+
+
+
+
+
+
+
+
+
+/**** DEFAULTS ****/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 20px;  /* 1rem will equal this now */
+    line-height: 1.6;
+    font-family: sans-serif; /* add google fonts */
+}
+/***FROM ORIGINAL ****/
+  #messages { width: 40em; border: 1px solid grey; min-height: 20em; }
+  #messages img { max-width: 240px; max-height: 160px; display: block; }
+  #header { position: fixed; top: 0; background-color: white; }
+  .push { margin-bottom: 2em; }
+  @keyframes yellow-fade { 0% {background: #f2f2b8;} 100% {background: none;} }
+  .highlight { -webkit-animation: yellow-fade 2s ease-in 1; animation: yellow-fade 2s ease-in 1; }
+
+/**** PAGES ****/
+.page{
+    display: none;
+    width: 100%;
+    min-height: 100%; /* allow for content off the bottom of the page */
+    position: fixed;  /* or absolute if the user needs to scroll for more content */
+    padding: 1rem 2rem;
+}
+.active{
+    display: block;
+}
+/*
+   <li><a href="#" data-target="login" class="nav-link">Login</a></li>
+                <li><a href="#" data-target="waitingroom" class="nav-link">WaitingRoom</a></li>
+                <li><a href="#" data-target="camera" class="nav-link">CameraRoom</a></li>
+                <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
+*/
+#login{
+/*  background-color: hsl(60, 50%, 80%); */
+}
+#waitingroom{
+  /*  background-color: #8511CE; */
+}
+#cameraroom{
+  /*  background-color: hsl(240, 50%, 80%); */
+}
+#judge{
+  /*  background-color: hsl(255, 50%, 80%); */
+}
+h1{
+    font-size: 2rem;
+    font-weight: 600;
+    transition: all 0.4s;
+    color: white;
+}
+.big{
+    font-size: 5rem;
+    font-weight: 900;
+}
+/*** BGN CAMERA CSS ***/
+canvas {
+  background-color: #ccc;
+  max-width: 100%;
+  width: 300px;
+}
+
+div#container {
+margin: 0 auto 0 auto;
+max-width: 40em;
+padding: 1em 1.5em 1.3em 1.5em;
+}
+
+#logout{
+}
+
+#gum-local{
+   margin: 0 auto; width: 400px;
+}
+video {
+  background: #222;
+  margin: 0 0 20px 0;
+  width: 300px;
+}
+
+.videoCam{
+  width: 300px;
+  background-color: purple;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*** END CAMERA CSS ***/

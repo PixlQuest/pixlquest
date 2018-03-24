@@ -20,23 +20,15 @@
 
   </head>
   <body>
-    <header class="sect_top_brand">
-        <figure class="navbar-brand d-flex flex-column align-items-center cont_brand">
-            <img src="assets/img/logo_pixlquest@2x.png" alt="pixlquest_logo" class="img_logo">
-            <p class="p_logo">pixlquest</p>
-            <p class="sub_slogan">Snap it man</p>
-        </figure>
-    </header>
-    <section class="main_cont d-flex align-items-center justify-content-center">
-      <div class="row col-12 col-md-8 col-xl-4">
-        <div class="card d-flex w-100 card_login justify-content-center">
-          <div class="card-body cont_login d-flex flex-column justify-content-around align-items-center">
-            <div class="cont_img_login "></div>
-            <button class="btn_base google button align-self-center" id="google" data-target="waitingroom">Login with google</button>
-          </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-lg-12 mt-2">
+            <button id='logout' class='idp-button btn btn-primary '>Sign out</button>
         </div>
       </div>
-    </section>
+    </div>
+
+
     <main>
       <section class="sect_top_brand">
           <div class="cont_brand">
@@ -103,36 +95,7 @@
 
       </div><!-- ./#waitingroom -->
 
-      <div class="page" id="cameraroom">
-        <h1>CameraRoom</h1>
-        <ol>
-          <li><a href="#" data-target="login" class="nav-link">Login</a></li>
-          <li><a href="#" data-target="waitingroom" class="nav-link">WaitingRoom</a></li>
-          <li><a href="#" data-target="cameraroom" class="nav-link">CameraRoom</a></li>
-          <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
-        </ol>
-        <button id="snap">Take screenshot</button>
 
-        <div id="container">
-          <div class="highlight"></div>
-          <div class="videoCam">
-            <video id="gum-local" autoplay playsinline></video>
-          </div>
-          <div class="picture">
-            <canvas id="pic-canvas" class="snapped"></canvas>
-          </div>
-          <!-- gives user the option to take the photo -->
-          <image id="new_pic">
-          <canvas id="new_canvas"></canvas>
-          hello
-          <!-- DEBUGGING PURPOSES
-          <div id="errorMsg"></div>
-          <p class="warning"><strong>Warning:</strong> if you're not using headphones, pressing play will cause feedback.</p>
-          <p>Display the video stream from <code>getUserMedia()</code> in a video element.</p>
-          <p>The <code>MediaStream</code> object <code>stream</code> passed to the <code>getUserMedia()</code> callback is in global scope, so you can inspect it from the console.</p>
-          -->
-        </div>
-      </div>
       <div class="page" id="cameraroom">
         <h1>CameraRoom</h1><br />
         <h5 id="newCatetory"></h5>
