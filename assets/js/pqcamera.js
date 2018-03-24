@@ -1,9 +1,8 @@
 
 define(["jquery"],function ($) {
-
-
-
   console.log("pqcamera is online");
+
+
 
   // IF CAMERA NEEDS TO BE TURNED ON
 var useCamera = true;
@@ -14,6 +13,7 @@ if(useCamera){
   var video = document.querySelector('video');
   var canvas = document.querySelector('canvas'); // holder for photo
   var context = canvas.getContext('2d');
+  var cont = canvas.getContext('2d');
 
   // variables for later use.
   var w, h, ratio;
@@ -100,24 +100,51 @@ if(useCamera){
   //when a picture is taken do the following
   var snap = function() {
     console.log("click,click!");
-
+    $(".videoCam").hide()
 
         // Define the size of the rectangle that will be filled (basically the entire element)
+
         context.fillRect(0, 0, w, h);
         // Grab the image from the video
         context.drawImage(video, 0, 0, w, h);
 
-
-        var imageIMAGE = new Image();
-        //save the picture into a variable using toDataURL
         var savedPic = canvas.toDataURL();
-      //  console.log(savedPic);
-        //IMAGE VERSION
-        imageIMAGE.id = "new_pic";
-        imageIMAGE.src = savedPic;
-        document.getElementById('new_pic').appendChild(imageIMAGE);
+        console.log(savedPic);
+
+/*
+        var myImage = new Image();
+        myImage.src = imgData;
+        cont.drawImage(savedPic, 0, 0, w, h);
+      */
+      var myCanvas = document.getElementById('new_canvas');
+      var ctv = myCanvas.getContext('2d');
+      var img = new Image;
+      img.onload = function(){
+        ctv.drawImage(img,0,0,w,h); // Or at whatever offset you like
+      };
+      img.src = savedPic;
+    //uploa  var uploadTask = storageRef.child('images/' + "apple").put(blob);
 
 
+      function uploadPic(savedPic) {
+            var file = savedPic;
+
+            // Get a reference to the location where we'll store our photos
+            var storageRef = storage.ref().child('chat_photos');
+
+            // Get a reference to store file at photos/<FILENAME>.jpg
+            var photoRef = storageRef.child(file.name);
+
+            // Upload file to Firebase Storage
+            var uploadTask = photoRef.put(file);
+            uploadTask.on('state_changed', null, null, function() {
+              // When the image has successfully uploaded, we get its download URL
+              var downloadUrl = uploadTask.snapshot.downloadURL;
+              // Set the download URL to the message box, so that the user can send it to the database
+              textInput.value = downloadUrl;
+            });
+          }
+/*
         //CANVAS VERSION
         var ctxB = document.getElementById('new_canvas').getContext('2d');
         var imgCANVAS = new Image();
@@ -135,11 +162,10 @@ if(useCamera){
         tracks.forEach(function(track) {
           track.stop();
 
-          $(".videoCam").hide();
-          $(".picture").hide();
+
         });
 
-
+*/
 
       }
 

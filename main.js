@@ -208,7 +208,9 @@ var stateChangeCount = 0;
           //if(stopListening){
                 //unsubscribe
           //}
-          setCategoryInView();
+          var myCameraStatus = setCategoryInView();
+          //console.log("useCameraFunc: ",setCategoryInView().useCamera);
+          console.log("useCamera: ",myCameraStatus.useCamera);
 console.log("querySnapshot.size=", querySnapshot.size ); //RM02 0       never logged in = 1
 console.log("querySnapshot.empty=", querySnapshot.empty ); //RM02 true  never logged in = false
           if (querySnapshot.empty===false || ( querySnapshot.size === 0 && querySnapshot.empty===true )) {
@@ -344,22 +346,36 @@ function delUser(firebaseAuthUser){
 
 }
 function setCategoryInView() {
+
   console.log("In setCategoryInView");
+
   // variables
   var useCamera = true;
 
-  // pqRooms collection
-  var roomCategoryRef = db.collection('pqRooms');
-  var theViewCategory = roomCategoryRef.where('name', '==', 'RM02').get()
-  .then(function(snapshot){
-    console.log("categorySnapshot:",snapshot);
-  console.log("categoryIs: ",snapshot.data.category);
-  })
-  .catch(err => {
-      console.error('ERROR setCategoryInView', err);
-    }); //end catch
-  //console.log("theViewCategory: ",theViewCategory);
-}
+  var docRef = db.collection("pqRooms").doc("room02");
+  docRef.get().then(function(doc) {
+
+    if (doc.exists) {
+      // testing
+      console.log("categoryIs: ",doc.data().category);
+      // create object
+      var obj = {
+        theViewCategory: doc.data().category,
+        useCamera: true
+      };
+      // testing
+      console.log("categoryObj: ", obj);
+
+      return obj;
+    } else {
+        //error
+        console.log("Error: No such document!");
+        obj = {msg: "Error: No such document!"};
+        return obj;
+    }
+  }).catch(function(error) { console.log("Error getting document:", error); });
+
+}; //end function setCategoryInView
 
 
 //XXXdetermine available room
@@ -446,8 +462,8 @@ function checkForAvailableRoom(firebaseAuthUser) {
         console.log("category ",categoryHere +" "+ "playerCount " + playerCount);
 
 
-
-        if ( categoryHere == "null") {
+        //categoryHere == "null"
+        if ( true ) {
 
 
           console.log("in IF");

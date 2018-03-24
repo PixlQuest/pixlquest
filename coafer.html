@@ -21,99 +21,7 @@
 
   </head>
   <body>
-    <header class="sect_top_brand">
-        <figure class="navbar-brand d-flex flex-column align-items-center cont_brand container-fluid">
-            <img src="assets/img/logo_pixlquest@2x.png" alt="pixlquest_logo" class="img_logo">
-            <p class="p_logo">pixlquest</p>
-            <p class="sub_slogan">Snap it man</p>
-        </figure>
-    </header>
-    <section class="main_cont d-flex align-items-center">
-      <div class="d-flex justify-content-center container-fluid">
-        <div class="card d-flex card_login justify-content-center">
-          <div class="card-body cont_login d-flex flex-column justify-content-around align-items-center">
-            <div class="cont_img_login "></div>
-            <button class="btn_base google button align-self-center" id="google" data-target="waitingroom">Login with google</button>
-          </div>
-        </div>
-      </div>
-    </section>
-      <section class="main_cont">
-      <div class="d-flex justify-content-center container-fluid">
-        <div class="card d-flex card_waiting justify-content-center">
-          <div class="card-body d-flex justify-content-around align-items-center flex-column">
-              <h1 class="head_waiting">Waiting room</h1>
-            <div class="d-flex wrap_players justify-content-around align-items-center">
-              <div class="cont_players align-self-end"><h2 class="down_text">Player 1</h2></div>
-              <div class="cont_players top_move align-self-start"><h2 class="down_text">You</h2></div>
-              <div class="cont_players align-self-end">
-                <h2 class="down_text">Player 2 </h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-      <section class="main_cont back_pixlquest">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <div class="card card_shooting">
-          <div class="card-header cont_top_head">
-                <h1 class="head_shoot text-uppercase align-text-top">Word: Apple</h1>
-            </div>
-			  <div class="card-body">
-				  <img src="assets/img/word_cat.png" class="img-fluid" alt="Responsive image">
-			  </div>
-            <div class="card-body align-self-center">
-            </div>
-        </div>
-        <a href="#" class="btn btn_base snap">Snap it!</a>
-      </div>
-    </section>
-    <main class="sect">
 
-      <div class="page active" id="login">
-        <h1>Login</h1>
-
-        <span id='login'>
-          <button id='google' data-target="waitingroom" class='idp-button btn btn-danger'>Sign in with Google</button>
-          <button id='facebook' class='idp-button'>Sign in with Facebook</button>
-        </span>
-
-        <ol>
-          <li><a href="#" data-target="login" class="nav-link">Login</a></li>
-          <li><a href="#" data-target="waitingroom" class="nav-link">WaitingRoom</a></li>
-          <li><a href="#" data-target="cameraroom" class="nav-link">CameraRoom</a></li>
-          <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
-        </ol>
-      </div>
-
-      <div class="page" id="waitingroom">
-
-        <h1>WaitingRoom</h1>
-        <ol>
-          <li><a href="#" data-target="login" class="nav-link">Login</a></li>
-          <li><a href="#" data-target="waitingroom" class="nav-link">WaitingRoom</a></li>
-          <li><a href="#" data-target="cameraroom" class="nav-link">CameraRoom</a></li>
-          <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
-        </ol>
-
-        <div id='header'>
-          <label for='username'><img src="https://www.gstatic.com/images/icons/material/system/1x/account_box_black_24dp.png" width="24"/></label>
-          <span id='username'></span>
-          <button id='logout' class='idp-button'>Sign out</button>
-        </div><!-- ./#header -->
-
-        <div class="push"></div>
-        <ul id='messages'></ul>
-
-        <div id='footer'>
-          <img src="https://www.gstatic.com/images/icons/material/system/1x/add_a_photo_black_24dp.png" width="24"/>
-          <input type="file" id="file" name="file">
-          <input id='text'>
-          <button id='send'>Send</button>
-        </div><!-- ./#footer -->
-
-      </div><!-- ./#waitingroom -->
 
       <div class="page" id="cameraroom">
         <h1>CameraRoom</h1>
@@ -134,8 +42,9 @@
             <canvas id="pic-canvas" class="snapped"></canvas>
           </div>
           <!-- gives user the option to take the photo -->
-
+          <image id="new_pic">
           <canvas id="new_canvas"></canvas>
+          hello
           <!-- DEBUGGING PURPOSES
           <div id="errorMsg"></div>
           <p class="warning"><strong>Warning:</strong> if you're not using headphones, pressing play will cause feedback.</p>
