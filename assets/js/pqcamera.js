@@ -1,4 +1,4 @@
-'use strict';
+
 define(["jquery"],function ($) {
 
 
@@ -8,7 +8,7 @@ define(["jquery"],function ($) {
   // IF CAMERA NEEDS TO BE TURNED ON
 var useCamera = false;
 
-if(useCamera){
+//if(useCamera){
 
   var errorElement = document.querySelector('#errorMsg');
   var video = document.querySelector('video');
@@ -101,6 +101,14 @@ if(useCamera){
         // Grab the image from the video
         context.drawImage(video, 0, 0, w, h);
 
+        //Stop the camera after photo is taken
+        var tracks = stream.getTracks();
+
+        tracks.forEach(function(track) {
+          track.stop();
+        });
+
+
         $(".videoCam").hide();
         $(".picture").show();
       }
@@ -114,6 +122,6 @@ if(useCamera){
 
 
 
-}
+//}
 
 });
