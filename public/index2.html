@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title>PixlQuest</title>
+    <meta charset="utf-8">
+    <meta name="description" content="WebRTC code samples">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="description" content="Client-side WebRTC code samples">
+    <meta itemprop="name" content="WebRTC code samples">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+    <!-- <base target="_blank"> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="assets/css/coafer.css" rel="stylesheet" type="text/css">
+
+    <!--  -->
+
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-lg-12 mt-2">
+            <button id='logout' class='idp-button btn btn-primary '>Sign out</button>
+        </div>
+      </div>
+    </div>
+
+
+    <main>
+      <section class="sect_top_brand">
+          <div class="cont_brand">
+              <img src="assets/img/logo_pixlquest@2x.png" width="65" class="img_brand">
+              <div class="text-block">PixlQuest</div>
+              <div>Snap it man!</div>
+          </div>
+      </section>
+
+      <section class="cont_main container">
+        <div class="cont_login">
+          <div class="cont_img_login"></div>
+          <button href="#" class="btn_base google button" id="google" data-target="waitingroom">Login with google</button>
+        </div>
+      </section>
+
+<!--
+      <div class="page active" id="login">
+        <h1>Login</h1>
+
+        <span id='login'>
+          <button id='google' data-target="waitingroom" class='idp-button btn btn-danger'>Sign in with Google</button>
+        <button id='facebook' class='idp-button'>Sign in with Facebook</button>
+        </span>
+
+        <ol>
+          <li><a href="#" data-target="login" class="nav-link">Login</a></li>
+          <li><a href="#" data-target="waitingroom" class="nav-link">WaitingRoom</a></li>
+          <li><a href="#" data-target="cameraroom" class="nav-link">CameraRoom</a></li>
+          <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
+        </ol>
+      </div> -->
+
+      <div class="page" id="waitingroom">
+        <img src="assets/img/logo_pixlquest@2x.png" width="65" class="img_brand">
+
+        <h1>WaitingRoom</h1>
+        <div class="text-block">PixlQuest</div>
+        <div>Snap it man!</div>
+
+
+<!--
+        <ol>
+          <li><a href="#" data-target="login" class="nav-link">Login</a></li>
+          <li><a href="#" data-target="waitingroom" class="nav-link">WaitingRoom</a></li>
+          <li><a href="#" data-target="cameraroom" class="nav-link">CameraRoom</a></li>
+          <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
+        </ol>
+-->
+        <div id='header'>
+          <label for='username'><img src="https://www.gstatic.com/images/icons/material/system/1x/account_box_black_24dp.png" width="24"/></label>
+          <span id='username'></span>
+        </div><!-- ./#header -->
+
+        <div class="push"></div>
+        <ul id='messages'></ul>
+
+        <div id='footer'>
+          <img src="https://www.gstatic.com/images/icons/material/system/1x/add_a_photo_black_24dp.png" width="24"/>
+          <input type="file" id="file" name="file">
+          <input id='text'>
+          <button id='send'>Send</button>
+        </div><!-- ./#footer -->
+
+      </div><!-- ./#waitingroom -->
+
+
+      <div class="page" id="cameraroom">
+        <h1>CameraRoom</h1><br />
+        <h5 id="newCatetory"></h5>
+
+        <div id="container">
+          <div class="highlight"></div>
+          <div class="videoCam">
+            <video id="gum-local" autoplay playsinline></video>
+          </div>
+          <div class="picture">
+            <canvas id="new_canvas"></canvas>
+          </div>
+
+
+          <!-- gives user the option to take the photo -->
+          <button id="snap">Take screenshot</button>
+          <!-- DEBUGGING PURPOSES
+          <div id="errorMsg"></div>
+          <p class="warning"><strong>Warning:</strong> if you're not using headphones, pressing play will cause feedback.</p>
+          <p>Display the video stream from <code>getUserMedia()</code> in a video element.</p>
+          <p>The <code>MediaStream</code> object <code>stream</code> passed to the <code>getUserMedia()</code> callback is in global scope, so you can inspect it from the console.</p>
+          -->
+        </div>
+      </div>
+
+      <div class="page" id="judge">
+        <h1>JudgeRoom</h1>
+        <ol>
+          <li><a href="#" data-target="login" class="nav-link">Login</a></li>
+          <li><a href="#" data-target="waitingroom" class="nav-link">WaitingRoom</a></li>
+          <li><a href="#" data-target="cameraroom" class="nav-link">CameraRoom</a></li>
+          <li><a href="#" data-target="judge" class="nav-link">JudgeRoom</a></li>
+        </ol>
+      </div>
+
+    </main>
+
+<!--    <script src="main.js"></script>-->
+    <!-- <script data-main="main" src='assets/js/require.js' ></script> -->
+    <!-- Webrtc library adapter -->
+        <script data-main="main" src='assets/js/require.js' ></script>
+  </body>
+
+</html>
