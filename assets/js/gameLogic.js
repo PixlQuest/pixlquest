@@ -53,22 +53,22 @@ var wendy = 200;
     console.log("You are here GoogleAuth");
     auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(function(result) {
       // start
-      console.log("console.log.result=",result);
-      var ix = Webflow.require('ix');
+      var ix = Webflow.require('ix2');
       var $el = $('.cont_main');
       var trigger = {"type":"load","stepsA":[{"wait":200},{"opacity":1,"transition":"transform 500ms ease 0ms, opacity 500ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[]};
       ix.run(trigger, $el);
+      console.log("console.log.result=",result);
 
     }).catch(function(error) {
       // Handle Errors here.
-      var errorCode = error.code;
+      var myError = error;
       // var errorMessage = error.message;
       // // The email of the user's account used.
       // var email = error.email;
       // // The firebase.auth.AuthCredential type that was used.
       // var credential = error.credential;
       // // ...
-      console.log("console.log.errorCode=",errorCode);
+      console.log("console.log.errorCode=",myError);
     }); //end auth.signInWithPopup
   }); //end googleLogin
 
