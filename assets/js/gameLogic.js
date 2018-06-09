@@ -16,6 +16,7 @@ console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
           logout = document.getElementById('logout'),
           usernameElm = document.getElementById('username'),
           password = document.getElementById('password'),
+          onBoardingWebflow = document.getElementById('sect_onboarding'),
           username = "Web";
 
 var stateChangeCount = 0;
@@ -53,10 +54,8 @@ var wendy = 200;
     console.log("You are here GoogleAuth");
     auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(function(result) {
       // start
-      var ix = Webflow.require('ix2');
-      var $el = $('.cont_main');
-      var trigger = {"type":"load","stepsA":[{"wait":200},{"opacity":1,"transition":"transform 500ms ease 0ms, opacity 500ms ease 0ms","x":"0px","y":"0px"}],"stepsB":[]};
-      ix.run(trigger, $el);
+    //  console.log("console.log.this",this);
+      $("#sect_onboarding").toggleClass( "sect_onboarding_pixl" );
       console.log("console.log.result=",result);
 
     }).catch(function(error) {
@@ -70,6 +69,7 @@ var wendy = 200;
       // // ...
       console.log("console.log.errorCode=",myError);
     }); //end auth.signInWithPopup
+
   }); //end googleLogin
 
 }); //define
