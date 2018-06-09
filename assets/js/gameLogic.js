@@ -1026,7 +1026,7 @@ var roundEnd() = function(){
 
       tracks.forEach(function(track) {
         track.stop();
-      });  //tracks
+      });  //tracks 
     //uploa  var uploadTask = storageRef.child('images/' + "apple").put(blob);
 }
 
