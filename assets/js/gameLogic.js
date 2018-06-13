@@ -17,6 +17,7 @@ console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
           usernameElm = document.getElementById('username'),
           password = document.getElementById('password'),
           onBoardingWebflow = document.getElementById('sect_onboarding'),
+          letsStart = document.getElementById('letsStart'),
           username = "Web";
 
 var stateChangeCount = 0;
@@ -47,15 +48,29 @@ var wendy = 200;
   // Creating a reference to the waiting room chat
   var databaseRef = database.ref().child('chat');
 
+  //Lets Start button after game instructions
+  letsStart.addEventListener('click', function(event){
+  event.preventDefault();
+  $("#sect_onboarding").toggleClass( "sect_onboarding_pixl" );
+  console.log("console.log.result=",result);
+
+  });
+
   // Show a popup when the user asks to sign in with Google
   googleLogin.addEventListener('click', function(event) {
     event.preventDefault();
+
 
     console.log("You are here GoogleAuth");
     auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(function(result) {
       // start
     //  console.log("console.log.this",this);
-      $("#sect_onboarding").toggleClass( "sect_onboarding_pixl" );
+//      $("#sect_onboarding").toggleClass( "sect_onboarding_init" );
+      $("#sect_onboarding").toggleClass( "sect_onboarding_change" );
+//      $("#sect_main").toggleClass( "sect_main_init" );
+    //  $("#sect_main").toggleClass( "sect_main_change" );
+
+
       console.log("console.log.result=",result);
 
     }).catch(function(error) {
@@ -70,7 +85,7 @@ var wendy = 200;
       console.log("console.log.errorCode=",myError);
     }); //end auth.signInWithPopup
 
-  }); //end googleLogin 
+  }); //end googleLogin
   auth.onAuthStateChanged(function(firebaseAuthUser) {
     stateChangeCount += 1;
     console.log("state changed! " + stateChangeCount);
