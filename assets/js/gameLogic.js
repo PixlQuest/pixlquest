@@ -70,7 +70,7 @@ var wendy = 200;
       console.log("console.log.errorCode=",myError);
     }); //end auth.signInWithPopup
 
-  }); //end googleLogin
+  }); //end googleLogin 
   auth.onAuthStateChanged(function(firebaseAuthUser) {
     stateChangeCount += 1;
     console.log("state changed! " + stateChangeCount);
