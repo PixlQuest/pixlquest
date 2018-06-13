@@ -41,7 +41,7 @@ var wendy = 200;
         database = app.database(),
           db = app.firestore(),
           auth = app.auth();
-      //    storage = app.storage();    
+      //    storage = app.storage();
 
   // Creating a reference to the waiting room chat
   var databaseRef = database.ref().child('chat');
@@ -222,8 +222,8 @@ console.log("querySnapshot.empty=", querySnapshot.empty ); //RM02 true  never lo
             history.pushState({}, currentPage, `#${currentPage}`);
           //  document.getElementById(currentPage).dispatchEvent(new Event('show') );
             console.log("The user has already been added.");
-          }
-        }); //end of else
+          } //end of else
+        }); //end db.collection("pqUsers")
 
 
         db.collection("pqRooms").where('name', '==', 'RM02').where('numOfPlayers', '==', 3).get().then((querySnapshot) => {
@@ -313,7 +313,8 @@ console.log("querySnapshot.empty=", querySnapshot.empty ); //RM02 true  never lo
             isWinner:false,
             name: firebaseAuthUser.displayName,
             rank: 0,
-            room: "WR"
+            room: "WR",
+            virgin: true
           };
           console.log("addUser firebaseAuthUser",objPqUser);
           //push to the database
@@ -1029,7 +1030,7 @@ var roundEnd() = function(){
 
       tracks.forEach(function(track) {
         track.stop();
-      });  //tracks 
+      });  //tracks
     //uploa  var uploadTask = storageRef.child('images/' + "apple").put(blob);
 }
 

@@ -71,5 +71,67 @@ var wendy = 200;
     }); //end auth.signInWithPopup
 
   }); //end googleLogin
+  auth.onAuthStateChanged(function(firebaseAuthUser) {
+    stateChangeCount += 1;
+    console.log("state changed! " + stateChangeCount);
+    if (firebaseAuthUser == null) {
+      // User is not signed in.
+      return console.log("The firebase user is not logged in.");
+    } else {
+      //Check for googleAuthUser in pqUsers collection and if in WR
+      db.collection("pqUsers").where("id", "==", firebaseAuthUser.uid).where('room', '==', 'WR').get().then((querySnapshot) => {
+        // Logging
+        console.log("In pqUsers where id me and room is WR ");
+        console.log("querySnapshot.size=", querySnapshot.size ); //RM02 0       never logged in = 1
+        console.log("querySnapshot.empty=", querySnapshot.empty ); //RM02 true  never logged in = false
+        //
+        if (querySnapshot.empty===false || ( querySnapshot.size === 0 && querySnapshot.empty===true )) {
+          addUser(firebaseAuthUser);
+          // let currentPage = 'login';
+          // //hide welcome page
+          // $(".cont_main").hide();
+          // $('#cameraroom').addClass('active');
+          // theCamera();
+          // currentPage = 'cameraroom';
+          // history.pushState({}, currentPage, `#${currentPage}`);
+          // document.getElementById(currentPage).dispatchEvent(new Event('show'));
+          // checkForAvailableRoom(firebaseAuthUser);
+        } else {
+          // console.log("it went to the else on 216");
+          // let currentPage = 'login';
+          // $(".cont_main").hide();
+          // $('#waitingroom').addClass('active');
+          // history.pushState({}, currentPage, `#${currentPage}`);
+          console.log("The user has already been added.");
+        } //end of else
+      }); //end db.collection("pqUsers")
+    } //end of else
+  }); //end auth.onAuthStateChanged
+// FUNCTIONS
+function addUser(firebaseAuthUser) {
+  // Create new record
+  var objPqUser = {
+    id: firebaseAuthUser.uid,
+    isJudge: false,
+    isWinner:false,
+    name: firebaseAuthUser.displayName,
+    rank: 0,
+    room: "WR",
+    virgin: true
+  };
 
+  // Test object key values
+  console.log("addUser firebaseAuthUser",objPqUser);
+
+  // Push to the database
+  db.collection("pqUsers").doc(firebaseAuthUser.uid).set(objPqUser)
+  .then(function(docRef) {
+    // Display that it completed
+    console.log("done");
+  })
+  .catch(function(error) {
+    // Display error message
+    console.error("Error adding document: ", error);
+  });
+}; //end addUser function
 }); //define
