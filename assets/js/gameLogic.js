@@ -36,7 +36,13 @@ var wendy = 200;
         messagingSenderId: "700236181225"
       };
 
+var animLoadingSectOnboard = function(){
+    document.getElementById("sect_onboarding").style.WebkitTransform = "translateX(0)";
+    document.getElementById("sect_onboarding").style.msTransform = "translateX(0)";
+    document.getElementById("sect_onboarding").style.Transform = "translateX(0)";
 
+    console.log("entro a la funcion de animar");
+}
 
   // Get the Firebase app and all primitives we'll use
       var app = firebase.initializeApp(config),
@@ -56,6 +62,8 @@ var wendy = 200;
 
   });
 
+
+
   // Show a popup when the user asks to sign in with Google
   googleLogin.addEventListener('click', function(event) {
     event.preventDefault();
@@ -67,8 +75,10 @@ var wendy = 200;
     //  console.log("console.log.this",this);
 //      $("#sect_onboarding").toggleClass( "sect_onboarding_init" );
       $("#sect_onboarding").toggleClass( "sect_onboarding_change" );
+      $(".sect_main").toggleClass( "sect_main_change" );
 //      $("#sect_main").toggleClass( "sect_main_init" );
     //  $("#sect_main").toggleClass( "sect_main_change" );
+//        animLoadingSectOnboard();
 
 
       console.log("console.log.result=",result);
